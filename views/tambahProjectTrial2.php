@@ -1,5 +1,5 @@
 <h3>Fitur Project</h3>
-<form>
+<form action="verifikasiProjectTrial" method="post">
 <table class="table">
 	<tr>
 		<th></th>
@@ -51,10 +51,18 @@
 	</tr>
   </div>
 </table>
+<?php
+
+echo form_hidden('namaProject',$namaProject);
+echo form_hidden('kategori',$kategori);
+echo form_hidden('deskripsi',$deskripsi);
+echo form_hidden('budget',$budget);
+
+?>
 <div class="control-group">
     <div class="controls">
-      <button type="submit" class="btn btn-info">Next</button>
-      <button type="submit" class="btn btn-danger">Back</button>
+      <input type="submit" class="btn btn-info" value="Next" name="nextVerifikasi">
+      <input type="submit" class="btn btn-danger" value="Back" name="backTrial">
     </div>
 </div>
 </form>
