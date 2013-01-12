@@ -1,5 +1,5 @@
 <h3>Tambah Project Regular</h3>
-<form class="form-horizontal" action="cekSubmit" method="post">
+<form class="form-horizontal" action="tambahProjectFitur" method="post">
   <div class="control-group">
     <label class="control-label" for="inputNamaProject">Nama Project</label>
     <div class="controls">

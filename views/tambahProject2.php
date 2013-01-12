@@ -1,5 +1,5 @@
 <h3>Fitur Project</h3>
-<form  action="cekSubmit" method="post">
+<form  action="verifikasiProject" method="post">
 <table class="table">
 	<tr>
 		<th></th>
