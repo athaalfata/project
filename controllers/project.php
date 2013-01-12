@@ -9,6 +9,7 @@ class Project extends Public_Controller{
 
 	function __construct() {
         parent::__construct();
+        $this->load->model('project_m','',TRUE);
 	}
 
 	/* fungsi index untuk menampilkan project secara default */
@@ -84,5 +85,18 @@ class Project extends Public_Controller{
 
 	function detailProjectForSelection(){
 		$this->template->build('detailProjectForSelection');
+	}
+
+	function simpanProject(){
+		if($this->input->post('okSimpan')){
+			$data['title'] = $this->input->post('namaProject');
+			$data['category_id'] = $this->input->post('kategori');
+			$data['body'] = $this->input->post('deskripsi');
+			$data['slug'] = $this->input->post('namaProject');
+			$this->project_m->simpanProject($data);
+			redirect('project/project/index');
+		}else if($this->input->post('backTambah')){
+			redirect('project/project/tambahProject');
+		}
 	}
 }

@@ -10,17 +10,17 @@
     <label class="control-label" for="inputKategori">Kategori</label>
     <div class="controls">
       <select multiple="multiple" name="kategori">
-        <option name="1">Websites, IT & Software</option>
-        <option name="2">Mobile Phones & Computing</option>
-        <option name="3">Writing & Content</option>
-        <option name="4">Design, Media & Architecture</option>
-        <option name="5">Data Entry & Admin</option>
-        <option name="6">Engineering & Science</option>
-        <option name="7">Product Sourcing & Manufacturing</option>
-        <option name="8">Sales & Marketing</option>
-        <option name="9">Business, Accounting, Human Resources & Legal</option>
-        <option name="10">Translation & Languages</option>
-        <option name="11">Other</option>
+        <option value="1">Websites, IT & Software</option>
+        <option value="2">Mobile Phones & Computing</option>
+        <option value="3">Writing & Content</option>
+        <option value="4">Design, Media & Architecture</option>
+        <option value="5">Data Entry & Admin</option>
+        <option value="6">Engineering & Science</option>
+        <option value="7">Product Sourcing & Manufacturing</option>
+        <option value="8">Sales & Marketing</option>
+        <option value="9">Business, Accounting, Human Resources & Legal</option>
+        <option value="10">Translation & Languages</option>
+        <option value="11">Other</option>
       </select>
     </div>
   </div>
@@ -40,12 +40,12 @@
     <label class="control-label" for="inputBudget">Budget yang tersedia</label>
     <div class="controls">
       <select multiple="multiple" name="budget">
-        <option name="1">Kurang dari Rp. 5.000.000,00</option>
-        <option name="2">Rp. 5.000.000,00 - Rp. 10.000.000,00</option>
-        <option name="3">Rp. 10.000.000,00 - Rp. 50.000.000,00</option>
-        <option name="4">Rp. 50.000.000,00 - Rp. 100.000.000,00</option>
-        <option name="5">Lebih dari Rp. 100.000.000,00</option>
-        <option name="6">Tidak Yakin</option>
+        <option value="1">Kurang dari Rp. 5.000.000,00</option>
+        <option value="2">Rp. 5.000.000,00 - Rp. 10.000.000,00</option>
+        <option value="3">Rp. 10.000.000,00 - Rp. 50.000.000,00</option>
+        <option value="4">Rp. 50.000.000,00 - Rp. 100.000.000,00</option>
+        <option value="5">Lebih dari Rp. 100.000.000,00</option>
+        <option value="6">Tidak Yakin</option>
       </select>
     </div>
   </div>

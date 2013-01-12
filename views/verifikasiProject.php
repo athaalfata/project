@@ -1,5 +1,13 @@
 <h3>Verifikasi Project</h3>
-<form>
+<form action="simpanProject" method="post">
+	<?php
+
+		echo form_hidden('namaProject',$namaProject);
+		echo form_hidden('kategori',$kategori);
+		echo form_hidden('deskripsi',$deskripsi);
+		echo form_hidden('budget',$budget);
+
+	?>
 <table class="table">
 	<tr>
 		<td>Nama Project</td>
@@ -19,7 +27,7 @@
 	<tr>
 		<td>Skill yang dibutuhkan</td>
 		<td>:</td>
-		<td>Android, Java</td>
+		<td>-</td>
 	</tr>
 	<tr>
 		<td>Waktu berakhir</td>
@@ -42,8 +50,8 @@
 		<td>
 			<div class="control-group">
 			    <div class="controls">
-			      <button type="submit" class="btn btn-info">OK</button>
-			      <button type="submit" class="btn btn-danger">Back</button>
+			      <input type="submit" class="btn btn-info" name="okSimpan" value="OK">
+			      <input type="submit" class="btn btn-danger" name="backTambah" value="Back">
 			    </div>
 			</div>
 		</td>	
