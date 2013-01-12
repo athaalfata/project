@@ -37,6 +37,9 @@ class Project extends Public_Controller{
 	function tambahProjectFitur(){
 		if($this->input->post('nextRegular')){
 			$data['namaProject'] = $this->input->post('namaProject');
+			$data['kategori'] = $this->input->post('kategori');
+			$data['deskripsi'] = $this->input->post('deskripsi');
+			$data['budget'] = $this->input->post('budget');
 			$this->template->build('tambahProject2',$data);
 		}else if($this->input->post('cancel')){
 			redirect('project/project/index');
@@ -62,6 +65,9 @@ class Project extends Public_Controller{
 	function verifikasiProject(){
 		if($this->input->post('nextVerifikasi')){
 			$data['namaProject'] = $this->input->post('namaProject');
+			$data['kategori'] = $this->input->post('kategori');
+			$data['deskripsi'] = $this->input->post('deskripsi');
+			$data['budget'] = $this->input->post('budget');
 			$this->template->build('verifikasiProject',$data);
 		}else if($this->input->post('backRegular')){
 			redirect('project/project/tambahProject');

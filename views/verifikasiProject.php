@@ -9,12 +9,12 @@
 	<tr>
 		<td>Kategori</td>
 		<td>:</td>
-		<td>Website, IT & Software</td>
+		<td><?php echo $kategori ?></td>
 	</tr>
 	<tr>
 		<td>Deskripsi</td>
 		<td>:</td>
-		<td>-</td>
+		<td><?php echo $deskripsi ?></td>
 	</tr>
 	<tr>
 		<td>Skill yang dibutuhkan</td>
@@ -30,6 +30,11 @@
 		<td>Fitur-fitur</td>
 		<td>:</td>
 		<td>-</td>
+	</tr>
+	<tr>
+		<td>Budget</td>
+		<td>:</td>
+		<td><?php echo $budget ?></td>
 	</tr>
 	<tr>
 		<td></td>

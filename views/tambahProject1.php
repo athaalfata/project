@@ -9,7 +9,7 @@
   <div class="control-group">
     <label class="control-label" for="inputKategori">Kategori</label>
     <div class="controls">
-      <select multiple="multiple">
+      <select multiple="multiple" name="kategori">
         <option name="1">Websites, IT & Software</option>
         <option name="2">Mobile Phones & Computing</option>
         <option name="3">Writing & Content</option>
@@ -39,7 +39,7 @@
   <div class="control-group">
     <label class="control-label" for="inputBudget">Budget yang tersedia</label>
     <div class="controls">
-      <select multiple="multiple">
+      <select multiple="multiple" name="budget">
         <option name="1">Kurang dari Rp. 5.000.000,00</option>
         <option name="2">Rp. 5.000.000,00 - Rp. 10.000.000,00</option>
         <option name="3">Rp. 10.000.000,00 - Rp. 50.000.000,00</option>
