@@ -25,63 +25,22 @@
 		<th>Type</th>
 		<th>Budget</th>
 		<th>Sisa Waktu</th>
+		<th>Detail</th>
 	</tr>
-	<tr>
-		<td>1</td>
-		<td>Aplikasi Mobile</td>
-		<td>Mobile Phone & Computing</td>
-		<td>Regular</td>
-		<td>< 10.000.000,- </td>
-		<td>1 hari 13 jam</td>
-	</tr>
-	<tr>
-		<td>2</td>
-		<td>C++ Tutor</td>
-		<td>Website, IT & Software</td>
-		<td>Regular</td>	
-		<td>< 5.000.000,- </td>
-		<td>1 hari 10 jam</td>
-	</tr>
-	<tr>
-		<td>3</td>
-		<td>Media Pembelajaran SMA</td>
-		<td>Website, IT & Software</td>
-		<td>Regular</td>
-		<td>< 5.000.000,- </td>
-		<td>7 hari 5 menit</td>
-	</tr>
-	<tr>
-		<td>4</td>
-		<td>Media Pembelajaran SMP</td>
-		<td>Website, IT & Software</td>
-		<td>Regular</td>
-		<td>< 5.000.000,- </td>
-		<td>4 hari 5 jam</td>
-	</tr>
-	<tr>
-		<td>5</td>
-		<td>Software Perdagangan</td>
-		<td>Website, IT & Software</td>
-		<td>Regular</td>
-		<td>< 10.000.000,- </td>
-		<td>5 hari 2 jam</td>
-	</tr>
-	<tr>
-		<td>6</td>
-		<td>Software Perpustakaan</td>
-		<td>Website, IT & Software</td>
-		<td>Regular</td>
-		<td>< 10.000.000,- </td>
-		<td>2 hari 5 jam</td>
-	</tr>
-<table>
+	<?php $i = 1 ; foreach ($project as $item) { ?>
+		<tr>
+			<td><?php echo $i ?></td>
+			<td><?php echo $item->title ?></td>
+			<td><?php echo $item->category_id ?></td>
+			<td><?php echo $item->type ?></td>
+			<td>< 5.000.000,- </td>
+			<td>1 hari 13 jam</td>
+			<td><a href="<?php echo site_url('project/project/detailProject/'.$item->id) ?>">lihat</a></td>
+		</tr>
+	<?php $i++; } ?>
+</table>
 <div class="pagination">
   <ul>
-    <li><a href="#">Prev</a></li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">Next</a></li>
+    <li><?php echo $this->pagination->create_links(); ?></li>
   </ul>
 </div>

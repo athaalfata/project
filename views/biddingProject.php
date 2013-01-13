@@ -1,10 +1,15 @@
 <h3>Bidding Project</h3>
-<form>
+<form action="<?php echo site_url('project/project/simpanTawaran') ?>" method="post">
 <table class="table">
+	<?php foreach ($project as $item) { ?>
+	<?php
+		echo form_hidden('id_project',$item->id);
+		echo form_hidden('id_user',1);
+	?>
 	<tr>
 		<td>Nama Project</td>
 		<td>:</td>
-		<td>Aplikasi Mobile</td>
+		<td><?php echo $item->title ?></td>
 	</tr>
 	<tr>
 		<td>Budget</td>
@@ -14,7 +19,7 @@
 	<tr>
 		<td>Tawaran Anda</td>
 		<td>:</td>
-		<td>Rp. <input type="text" placeholder="Tawaran Anda"></td>
+		<td>Rp. <input type="text" placeholder="Tawaran Anda" name="tawaran"></td>
 	</tr>
 	<tr>
 		<td></td>
@@ -22,11 +27,12 @@
 		<td>
 			<div class="control-group">
 			    <div class="controls">
-			      <button type="submit" class="btn btn-info">Bid !</button>
-			      <button type="submit" class="btn">Back</button>
+			      <input type="submit" class="btn btn-info" value="Bid !" name="bid">
+			      <a class="btn" href="<?php echo site_url('project/project/index')?>">Back</a>
 			    </div>
 			</div>
 		</td>	
 	</tr>
+	<?php } ?>
 </table>
 </form>

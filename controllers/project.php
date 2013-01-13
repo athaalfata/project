@@ -14,7 +14,16 @@ class Project extends Public_Controller{
 
 	/* fungsi index untuk menampilkan project secara default */
 	function index(){
-		$this->template->build('index');
+		$this->load->library('pagination');
+		$config['base_url'] = base_url() . 'project/project/index';
+		$config['total_rows'] = count($this->project_m->tampilProject()->result());
+		$config['per_page'] = '1'; //maksimum row perhalaman
+		$config['uri_segment'] = '4'; //pengaturan uri -alamat url
+		$config['full_tag_open'] = '';
+		$config['full_tag_close'] = '';
+		$this->pagination->initialize($config);
+		$data['project'] = $this->project_m->tampilProjectPerPage($config['per_page'],$this->uri->segment(4));
+		$this->template->build('index',$data);
 	}
 
 	function pilihTypeProject(){
@@ -115,12 +124,22 @@ class Project extends Public_Controller{
 		}
 	}
 
-	function detailProject(){
-		$this->template->build('detailProject');
+	function detailProject($id){
+		$data['project'] = $this->project_m->detailProject($id)->result();
+		$this->template->build('detailProject',$data);
 	}
 
-	function biddingProject(){
-		$this->template->build('biddingProject');
+	function biddingProject($id){
+		$data['project'] = $this->project_m->detailProject($id)->result();
+		$this->template->build('biddingProject',$data);
+	}
+
+	function simpanTawaran(){
+		$data['offer_budget'] = $this->input->post('tawaran');
+		$data['id_user'] = $this->input->post('id_user');
+		$data['id_project'] = $this->input->post('id_project');
+		$this->project_m->simpanTawaran($data);
+		redirect('project/project/index');
 	}
 
 	function detailProjectForSelection(){
@@ -133,8 +152,13 @@ class Project extends Public_Controller{
 			$data['category_id'] = $this->input->post('kategori');
 			$data['body'] = $this->input->post('deskripsi');
 			$data['slug'] = $this->input->post('namaProject');
-			$this->project_m->simpanProject($data);
-			redirect('project/project/index');
+			$data['type'] = $this->input->post('type');
+			$data['budget_id'] = $this->input->post('budget');
+			if($this->project_m->simpanProject($data)){
+				print_r("Ada Kesalahan, periksa kembali data project");
+			}else{
+				redirect('project/project/index');
+			}
 		}else if($this->input->post('backTambah')){
 			redirect('project/project/tambahProject');
 		}else if($this->input->post('backTambahTrial')){

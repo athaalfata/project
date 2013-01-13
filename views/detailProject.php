@@ -1,20 +1,21 @@
 <h3>Detail Project</h3>
 <form>
 <table class="table">
+	<?php foreach ($project as $item) { ?>
 	<tr>
 		<td>Nama Project</td>
 		<td>:</td>
-		<td>Aplikasi Mobile</td>
+		<td><?php echo $item->title ?></td>
 	</tr>
 	<tr>
 		<td>Kategori</td>
 		<td>:</td>
-		<td>Website, IT & Software</td>
+		<td><?php echo $item->category_id ?></td>
 	</tr>
 	<tr>
 		<td>Deskripsi</td>
 		<td>:</td>
-		<td>-</td>
+		<td><?php echo $item->body ?></td>
 	</tr>
 	<tr>
 		<td>Budget</td>
@@ -47,8 +48,8 @@
 		<td>
 			<div class="control-group">
 			    <div class="controls">
-			      <button type="submit" class="btn btn-info">Bid !</button>
-			      <button type="submit" class="btn">Back</button>
+			      <a class="btn btn-info" href="<?php echo site_url('project/project/biddingProject/'.$item->id) ?>">Bid !</a>
+			      <a class="btn" href="<?php echo site_url('project/project/index') ?>">Back</a>
 			    </div>
 			</div>
 		</td>	
@@ -74,6 +75,8 @@
 		<td>Rp. 6.500.000,-</td>
 		<td>11-01-2013</td>
 	</tr>
+	<?php } ?>
 </table>
 
 </form>
+

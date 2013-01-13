@@ -62,6 +62,8 @@ class Module_Project extends Module
 		$this->dbforge->drop_table('ipro_project');
 		$this->dbforge->drop_table('ipro_fitur');
 		$this->dbforge->drop_table('ipro_project_fitur');
+		$this->dbforge->drop_table('ipro_project_budget');
+		$this->dbforge->drop_table('ipro_project_bidder');
 
 		return $this->install_tables(array(
 			'ipro_project_categories' => array(
@@ -71,7 +73,7 @@ class Module_Project extends Module
 			),
 			'ipro_project' => array(
 				'id' => array('type' => 'INT', 'constraint' => 11, 'auto_increment' => true, 'primary' => true),
-				'title' => array('type' => 'VARCHAR', 'constraint' => 200, 'null' => false, 'unique' => true),
+				'title' => array('type' => 'VARCHAR', 'constraint' => 200, 'null' => false),
 				'slug' => array('type' => 'VARCHAR', 'constraint' => 200),
 				'category_id' => array('type' => 'INT', 'constraint' => 11, 'key' => true),
 				'attachment' => array('type' => 'VARCHAR', 'constraint' => 255, 'default' => ''),
@@ -83,6 +85,7 @@ class Module_Project extends Module
 				'status' => array('type' => 'ENUM', 'constraint' => array('pending', 'publish','accepted','completed'), 'default' => 'pending'),
 				'preview_hash' => array('type' => 'CHAR', 'constraint' => 32, 'default' => ''),
 				'type' => array('type' => 'ENUM', 'constraint' => array('regular','trial','kontes')),
+				'budget_id' => array('type' => 'INT', 'constraint' => 11),
 			),
 			'ipro_fitur' => array(
 				'id' => array('type' => 'INT', 'constraint' => 11, 'auto_increment' => true, 'primary' => true),
@@ -93,6 +96,17 @@ class Module_Project extends Module
 				'id' => array('type' => 'INT', 'constraint' => 11, 'auto_increment' => true, 'primary' => true),
 				'id_project' => array('type' => 'INT', 'constraint' => 11),
 				'id_fitur' => array('type' => 'INT', 'constraint' => 11),
+			),
+			'ipro_project_budget' => array(
+				'id' => array('type' => 'INT', 'constraint' => 11, 'auto_increment' => true, 'primary' => true),
+				'budget' => array('type' => 'VARCHAR', 'constraint' => 100),
+			),
+			'ipro_project_bidder' => array(
+				'id' => array('type' => 'INT', 'constraint' => 11, 'auto_increment' => true, 'primary' => true),
+				'id_user' => array('type' => 'INT', 'constraint' => 11),
+				'id_project' => array('type' => 'INT', 'constraint' => 11),
+				'offer_budget' => array('type' => 'VARCHAR', 'constraint' => 100),
+				'created_on' => array('type' => 'TIMESTAMP'),
 			),
 		));
 	}
