@@ -17,7 +17,7 @@ class Project extends Public_Controller{
 		$this->load->library('pagination');
 		$config['base_url'] = base_url() . 'project/project/index';
 		$config['total_rows'] = count($this->project_m->tampilProject()->result());
-		$config['per_page'] = '1'; //maksimum row perhalaman
+		$config['per_page'] = '10'; //maksimum row perhalaman
 		$config['uri_segment'] = '4'; //pengaturan uri -alamat url
 		$config['full_tag_open'] = '';
 		$config['full_tag_close'] = '';
@@ -167,4 +167,42 @@ class Project extends Public_Controller{
 			redirect('project/project/tambahProjectKontes');
 		}
 	}
+
+	function cariProject(){
+		$keyword = $this->input->post('keyword');
+    	$this->load->library('pagination');
+		$config['base_url'] = base_url() . 'project/project/index';
+		$config['total_rows'] = count($this->project_m->cariProject($keyword)->result());
+		$config['per_page'] = '10'; //maksimum row perhalaman
+		$config['uri_segment'] = '4'; //pengaturan uri -alamat url
+		$config['full_tag_open'] = '';
+		$config['full_tag_close'] = '';
+		$this->pagination->initialize($config);
+		$data['project'] =  $this->project_m->cariProjectPerPage($config['per_page'],$this->uri->segment(4),$keyword);
+		//print_r($data);
+		$this->template->build('index',$data);
+	}
+
+	public function urutProject(){
+    	$sortKey = $this->input->post('sortKey');
+    	if($sortKey == 1){
+	    	redirect('projects/UrutProjectTitle');
+		}else if($sortKey == 2){
+			redirect('projects/UrutProjectBudget');
+		}
+    }
+
+	public function urutProjectTitle(){
+    	$this->load->library('pagination');
+		$config['base_url'] = base_url() . 'project/project/index';
+		$config['total_rows'] = count($this->project_m->tampilProject()->result());
+		$config['per_page'] = '10'; //maksimum row perhalaman
+		$config['uri_segment'] = '4'; //pengaturan uri -alamat url
+		$config['full_tag_open'] = '';
+		$config['full_tag_close'] = '';
+		$this->pagination->initialize($config);
+		$data['project'] =  $this->project_m->urutProjectPerPageTitle($config['per_page'],$this->uri->segment(4));
+		//print_r($data);
+		$this->template->build('index',$data);
+    }
 }

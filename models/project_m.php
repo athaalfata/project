@@ -20,6 +20,27 @@ class project_m extends MY_Model
     	return $this->db->get();
     }
 
+    function cariProject($keyword){
+        $this->db->select('*');
+        $this->db->from('ipro_project');
+        $this->db->where('status','pending');
+        $this->db->like('title',$keyword);
+        return $this->db->get();
+    }
+
+    function cariProjectPerPage($perPage,$uri,$keyword){
+        $this->db->select('*');
+        $this->db->from('ipro_project');
+        $this->db->where('status','pending');
+        $this->db->like('title',$keyword);
+        $getData = $this->db->get('',$perPage, $uri);
+        if ($getData->num_rows() > 0) {
+            return $getData->result();
+        } else {
+            return null;
+        }
+    }
+
     function tampilProjectPerPage($perPage,$uri){
     	$this->db->select('*');
     	$this->db->from('ipro_project');
@@ -30,6 +51,19 @@ class project_m extends MY_Model
 		} else {
      		return null;
 		}
+    }
+
+    function urutProjectPerPageTitle($perPage,$uri){
+        $this->db->select('*');
+        $this->db->from('ipro_project');
+        $this->db->where('status','pending');
+        $this->db->order_by('title');
+        $getData = $this->db->get('',$perPage, $uri);
+        if ($getData->num_rows() > 0) {
+            return $getData->result();
+        } else {
+            return null;
+        }
     }
 
     function simpanProject($data)
