@@ -28,7 +28,12 @@
 	<tr>
 		<td>Skill yang dibutuhkan</td>
 		<td>:</td>
-		<td>-</td>
+		<td>
+			<ul>
+			<?php foreach($skill as $skil){?> 
+			<li><?php echo $skil; }?></li>
+			</ul>
+		</td>
 	</tr>
 	<tr>
 		<td>Waktu berakhir</td>

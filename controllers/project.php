@@ -30,18 +30,19 @@ class Project extends Public_Controller{
 		$this->template->build('pilihTypeProject');
 	}
 
-	function cekSubmit(){
-		if($this->input->post('regular')){
-			redirect('project/project/tambahProject');
-		}else if($this->input->post('trial')){
-			redirect('project/project/tambahProjectTrial');
-		}else if($this->input->post('kontes')){
-			redirect('project/project/tambahProjectKontes');
-		}
-	}
+	// function cekSubmit(){
+	// 	if($this->input->post('regular')){
+	// 		redirect('project/project/tambahProject');
+	// 	}else if($this->input->post('trial')){
+	// 		redirect('project/project/tambahProjectTrial');
+	// 	}else if($this->input->post('kontes')){
+	// 		redirect('project/project/tambahProjectKontes');
+	// 	}
+	// }
 
 	function tambahProject(){
-		$this->template->build('tambahProject1');
+		$this->template->append_js('module::formToWizard.js');
+		$this->template->build('addProject');
 	}
 
 	function tambahProjectFitur(){
@@ -57,71 +58,74 @@ class Project extends Public_Controller{
 	}
 
 	function tambahProjectTrial(){
-		$this->template->build('tambahProjectTrial1');
+		$this->template->build('addProjectTrial');
 	}
 
-	function tambahProjectFiturTrial(){
-		if($this->input->post('nextTrial')){
-			$data['namaProject'] = $this->input->post('namaProject');
-			$data['kategori'] = $this->input->post('kategori');
-			$data['deskripsi'] = $this->input->post('deskripsi');
-			$data['budget'] = $this->input->post('budget');
-			$this->template->build('tambahProjectTrial2',$data);
-		}else if($this->input->post('cancel')){
-			redirect('project/project/index');
-		}
-	}
+	// function tambahProjectFiturTrial(){
+	// 	if($this->input->post('nextTrial')){
+	// 		$data['namaProject'] = $this->input->post('namaProject');
+	// 		$data['kategori'] = $this->input->post('kategori');
+	// 		$data['deskripsi'] = $this->input->post('deskripsi');
+	// 		$data['budget'] = $this->input->post('budget');
+	// 		$this->template->build('tambahProjectTrial2',$data);
+	// 	}else if($this->input->post('cancel')){
+	// 		redirect('project/project/index');
+	// 	}
+	// }
 
 	function tambahProjectKontes(){
-		$this->template->build('tambahProjectKontes1');
+		$this->template->build('addProjectKontes');
 	}
 
-	function tambahProjectFiturKontes(){
-		if($this->input->post('nextKontes')){
-			$data['namaProject'] = $this->input->post('namaProject');
-			$data['kategori'] = $this->input->post('kategori');
-			$data['deskripsi'] = $this->input->post('deskripsi');
-			$data['budget'] = $this->input->post('budget');
-			$this->template->build('tambahProjectKontes2',$data);
-		}else if($this->input->post('cancel')){
-			redirect('project/project/index');
-		}
-	}
+	// function tambahProjectFiturKontes(){
+	// 	if($this->input->post('nextKontes')){
+	// 		$data['namaProject'] = $this->input->post('namaProject');
+	// 		$data['kategori'] = $this->input->post('kategori');
+	// 		$data['deskripsi'] = $this->input->post('deskripsi');
+	// 		$data['budget'] = $this->input->post('budget');
+	// 		$this->template->build('tambahProjectKontes2',$data);
+	// 	}else if($this->input->post('cancel')){
+	// 		redirect('project/project/index');
+	// 	}
+	// }
 
 	function verifikasiProject(){
-		if($this->input->post('nextVerifikasi')){
+		if($this->input->post('buatProject')){
 			$data['namaProject'] = $this->input->post('namaProject');
 			$data['kategori'] = $this->input->post('kategori');
 			$data['deskripsi'] = $this->input->post('deskripsi');
 			$data['budget'] = $this->input->post('budget');
+			$data['skill'] = $this->input->post('skill');
 			$this->template->build('verifikasiProject',$data);
-		}else if($this->input->post('backRegular')){
-			redirect('project/project/tambahProject');
 		}
 	}
 
 	function verifikasiProjectTrial(){
-		if($this->input->post('nextVerifikasi')){
+		if($this->input->post('buatProjectTrial')){
 			$data['namaProject'] = $this->input->post('namaProject');
 			$data['kategori'] = $this->input->post('kategori');
 			$data['deskripsi'] = $this->input->post('deskripsi');
 			$data['budget'] = $this->input->post('budget');
+			$data['skill'] = $this->input->post('skill');
 			$this->template->build('verifikasiProjectTrial',$data);
-		}else if($this->input->post('backTrial')){
-			redirect('project/project/tambahProjectTrial');
 		}
+		// else if($this->input->post('backTrial')){
+		// 	redirect('project/project/tambahProjectTrial');
+		// }
 	}
 
 	function verifikasiProjectKontes(){
-		if($this->input->post('nextVerifikasi')){
+		if($this->input->post('buatProjectKontes')){
 			$data['namaProject'] = $this->input->post('namaProject');
 			$data['kategori'] = $this->input->post('kategori');
 			$data['deskripsi'] = $this->input->post('deskripsi');
 			$data['budget'] = $this->input->post('budget');
+			$data['skill'] = $this->input->post('skill');
 			$this->template->build('verifikasiProjectKontes',$data);
-		}else if($this->input->post('backKontes')){
-			redirect('project/project/tambahProjectKontes');
 		}
+		// else if($this->input->post('backKontes')){
+		// 	redirect('project/project/tambahProjectKontes');
+		// }
 	}
 
 	function detailProject($id){
@@ -130,6 +134,7 @@ class Project extends Public_Controller{
 	}
 
 	function biddingProject($id){
+		$this->template->append_js('module::jquery.uploadprogress.0.3.js');
 		$data['project'] = $this->project_m->detailProject($id)->result();
 		$this->template->build('biddingProject',$data);
 	}

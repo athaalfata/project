@@ -8,11 +8,11 @@
 <div class="pull-right">
 <strong>Urut berdasarkan :</strong> 
 	<form action="<?php echo base_url('project/project/urutProjectTitle') ?>" method="post">
-	  <input type="radio" name="optionsRadios" value="nama" checked>
+	  <input type="radio" name="sortKey" value="nama" checked>
 	  Nama Project
-	  <input type="radio" name="optionsRadios" value="budget">
+	  <input type="radio" name="sortKey" value="budget">
 	  Budget
-	  <input type="radio" name="optionsRadios" value="time">
+	  <input type="radio" name="sorty" value="time">
 	  Sisa Waktu
 	  <input type="submit" class="btn" value="Urutkan" name="sort">
 	</form>
