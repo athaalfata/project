@@ -30,7 +30,8 @@
 		<td>:</td>
 		<td>
 			<ul>
-			<?php foreach($skill as $skil){?> 
+			
+			<?php if($skill) foreach($skill as $skil){?> 
 			<li><?php echo $skil; }?></li>
 			</ul>
 		</td>
@@ -43,7 +44,15 @@
 	<tr>
 		<td>Fitur-fitur</td>
 		<td>:</td>
-		<td></td>
+		<td>
+				<?php if($FiturProject != "") echo $FiturProject."<br>"; ?>
+				<?php if($ProjectUrgent != "") echo $ProjectUrgent."<br>"; ?>
+				<?php if($HiddenProject != "") echo $HiddenProject."<br>"; ?>
+				<?php if($ProjectKomisi != "") echo $ProjectKomisi."<br>"; ?>
+				<?php if($NonDisclosureAgreement != "") echo $NonDisclosureAgreement."<br>"; ?>
+				<?php if($OfflineOnline != "") echo $OfflineOnline."<br>"; ?>
+				<?php if($VerifikasiUser != "") echo $VerifikasiUser."<br>"; ?>
+		</td>
 	</tr>
 	<tr>
 		<td>Budget</td>

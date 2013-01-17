@@ -96,6 +96,13 @@ class Project extends Public_Controller{
 			$data['deskripsi'] = $this->input->post('deskripsi');
 			$data['budget'] = $this->input->post('budget');
 			$data['skill'] = $this->input->post('skill');
+			$data['FiturProject'] = $this->input->post('FiturProject');
+			$data['ProjectUrgent'] = $this->input->post('ProjectUrgent');
+			$data['HiddenProject'] = $this->input->post('HiddenProject');
+			$data['ProjectKomisi'] = $this->input->post('ProjectKomisi');
+			$data['NonDisclosureAgreement'] = $this->input->post('NonDisclosureAgreement');
+			$data['OfflineOnline'] = $this->input->post('OfflineOnline');
+			$data['VerifikasiUser'] = $this->input->post('VerifikasiUser');
 			$this->template->build('verifikasiProject',$data);
 		}
 	}
@@ -107,6 +114,13 @@ class Project extends Public_Controller{
 			$data['deskripsi'] = $this->input->post('deskripsi');
 			$data['budget'] = $this->input->post('budget');
 			$data['skill'] = $this->input->post('skill');
+			$data['FiturProject'] = $this->input->post('FiturProject');
+			$data['ProjectUrgent'] = $this->input->post('ProjectUrgent');
+			$data['HiddenProject'] = $this->input->post('HiddenProject');
+			$data['ProjectKomisi'] = $this->input->post('ProjectKomisi');
+			$data['NonDisclosureAgreement'] = $this->input->post('NonDisclosureAgreement');
+			$data['OfflineOnline'] = $this->input->post('OfflineOnline');
+			$data['VerifikasiUser'] = $this->input->post('VerifikasiUser');
 			$this->template->build('verifikasiProjectTrial',$data);
 		}
 		// else if($this->input->post('backTrial')){
@@ -121,6 +135,13 @@ class Project extends Public_Controller{
 			$data['deskripsi'] = $this->input->post('deskripsi');
 			$data['budget'] = $this->input->post('budget');
 			$data['skill'] = $this->input->post('skill');
+			$data['FiturProject'] = $this->input->post('FiturProject');
+			$data['ProjectUrgent'] = $this->input->post('ProjectUrgent');
+			$data['HiddenProject'] = $this->input->post('HiddenProject');
+			$data['ProjectKomisi'] = $this->input->post('ProjectKomisi');
+			$data['NonDisclosureAgreement'] = $this->input->post('NonDisclosureAgreement');
+			$data['OfflineOnline'] = $this->input->post('OfflineOnline');
+			$data['VerifikasiUser'] = $this->input->post('VerifikasiUser');
 			$this->template->build('verifikasiProjectKontes',$data);
 		}
 		// else if($this->input->post('backKontes')){

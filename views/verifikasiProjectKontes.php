@@ -43,7 +43,14 @@
 	<tr>
 		<td>Fitur-fitur</td>
 		<td>:</td>
-		<td>-</td>
+		<td><?php echo $FiturProject; ?><br>
+				<?php echo $ProjectUrgent; ?><br>
+				<?php echo $HiddenProject; ?><br>
+				<?php echo $ProjectKomisi; ?><br>
+				<?php echo $NonDisclosureAgreement; ?><br>
+				<?php echo $OfflineOnline; ?><br>
+				<?php echo $VerifikasiUser; ?>
+		</td>
 	</tr>
 	<tr>
 		<td>Budget</td>
