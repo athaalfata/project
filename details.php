@@ -86,6 +86,7 @@ class Module_Project extends Module
 				'preview_hash' => array('type' => 'CHAR', 'constraint' => 32, 'default' => ''),
 				'type' => array('type' => 'ENUM', 'constraint' => array('regular','trial','kontes')),
 				'budget_id' => array('type' => 'INT', 'constraint' => 11),
+				'hadiah' => array('type' => 'INT', 'constraint' => 11),	
 			),
 			'ipro_fitur' => array(
 				'id' => array('type' => 'INT', 'constraint' => 11, 'auto_increment' => true, 'primary' => true),

@@ -43,17 +43,53 @@ class project_m extends MY_Model
 
     function tampilProjectPerPage($perPage,$uri){
     	$this->db->select('*');
-    	$this->db->from('ipro_project');
-    	$this->db->where('status','pending');
+    	$this->db->from('ipro_project ip');
+        $this->db->join('ipro_project_categories ipc','ipc.id = ip.category_id');
+        $this->db->join('ipro_project_budget ipb','ipb.id = ip.budget_id');
+        $this->db->where('status','pending');
+        //$query = $this->db->query('SELECT * FROM default_ipro_project');
+        /*('SELECT ip.title as title, ipc.title as category_id FROM default_ipro_project ip, default_ipro_project_categories ipc
+            WHERE ip.category_id = ipc.id');*/
     	$getData = $this->db->get('',$perPage, $uri);
 		if ($getData->num_rows() > 0) {
 			return $getData->result();
 		} else {
      		return null;
 		}
+        /*
+            SELECT * 
+            FROM ipro_project ip, ipro_project_category ipc, ipro_project_budget ipb
+            WHERE ip.category_id = ipc.id AND ip.budget_id = ipb.id AND ip.status = pending
+        */
     }
 
     function urutProjectPerPageTitle($perPage,$uri){
+        $this->db->select('*');
+        $this->db->from('ipro_project');
+        $this->db->where('status','pending');
+        $this->db->order_by('title');
+        $getData = $this->db->get('',$perPage, $uri);
+        if ($getData->num_rows() > 0) {
+            return $getData->result();
+        } else {
+            return null;
+        }
+    }
+
+    function urutProjectPerPageBudget($perPage,$uri){
+        $this->db->select('*');
+        $this->db->from('ipro_project');
+        $this->db->where('status','pending');
+        $this->db->order_by('budget_id');
+        $getData = $this->db->get('',$perPage, $uri);
+        if ($getData->num_rows() > 0) {
+            return $getData->result();
+        } else {
+            return null;
+        }
+    }
+
+    function urutProjectPerPageTimeLeft($perPage,$uri){
         $this->db->select('*');
         $this->db->from('ipro_project');
         $this->db->where('status','pending');

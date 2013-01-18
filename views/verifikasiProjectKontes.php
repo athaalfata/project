@@ -5,7 +5,7 @@
 		echo form_hidden('namaProject',$namaProject);
 		echo form_hidden('kategori',$kategori);
 		echo form_hidden('deskripsi',$deskripsi);
-		echo form_hidden('budget',$budget);
+		echo form_hidden('hadiah',$budget);
 		echo form_hidden('type','kontes');
 
 	?>

@@ -134,7 +134,7 @@
                     <div class="controls">
                           <div class="input-prepend input-append">
                             <span class="add-on">Rp.</span>
-                            <input class="span2" id="appendedPrependedInput" type="text" name="budget">
+                            <input class="span2" id="appendedPrependedInput" type="text" name="hadiah">
                             <span class="add-on">.00</span>
                           </div>
                     </div>

@@ -133,7 +133,7 @@ class Project extends Public_Controller{
 			$data['namaProject'] = $this->input->post('namaProject');
 			$data['kategori'] = $this->input->post('kategori');
 			$data['deskripsi'] = $this->input->post('deskripsi');
-			$data['budget'] = $this->input->post('budget');
+			$data['hadiah'] = $this->input->post('hadiah');
 			$data['skill'] = $this->input->post('skill');
 			$data['FiturProject'] = $this->input->post('FiturProject');
 			$data['ProjectUrgent'] = $this->input->post('ProjectUrgent');
@@ -156,6 +156,24 @@ class Project extends Public_Controller{
 
 	function biddingProject($id){
 		$this->template->append_js('module::jquery.uploadprogress.0.3.js');
+		$this->template->append_js('module::jquery.js');
+		$this->template->append_js('module::vendor/jquery.ui.widget.js');
+		$this->template->append_js('module::jquery.iframe-transport.js');
+		$this->template->append_js('module::jquery.fileupload.js');
+		$this->template->append_js('module::jquery.fileupload-fp.js');
+		$this->template->append_js('module::jquery.fileupload-ui.js');
+		$this->template->append_js('module::main.js');
+		$this->template->append_js('module::bootstrap-image-gallery.min.js');
+		$this->template->append_js('module::bootstrap.min.js');
+		$this->template->append_js('module::canvas-to-blob.min.js');
+		$this->template->append_js('module::load-image.min.js');
+		$this->template->append_js('module::tmpl.min.js');
+		$this->template->append_css('module::bootstrap-image-gallery.min.css');
+		$this->template->append_css('module::bootstrap-responsive.min.css');
+		$this->template->append_css('module::bootstrap.min.css');
+		$this->template->append_css('module::style2.css');
+		$this->template->append_css('module::jquery.fileupload-ui.css');
+		$this->template->append_css('module::jquery.fileupload-ui-noscript.css');
 		$data['project'] = $this->project_m->detailProject($id)->result();
 		$this->template->build('biddingProject',$data);
 	}
@@ -228,6 +246,34 @@ class Project extends Public_Controller{
 		$config['full_tag_close'] = '';
 		$this->pagination->initialize($config);
 		$data['project'] =  $this->project_m->urutProjectPerPageTitle($config['per_page'],$this->uri->segment(4));
+		//print_r($data);
+		$this->template->build('index',$data);
+    }
+
+    public function urutProjectBudget(){
+    	$this->load->library('pagination');
+		$config['base_url'] = base_url() . 'project/project/index';
+		$config['total_rows'] = count($this->project_m->tampilProject()->result());
+		$config['per_page'] = '10'; //maksimum row perhalaman
+		$config['uri_segment'] = '4'; //pengaturan uri -alamat url
+		$config['full_tag_open'] = '';
+		$config['full_tag_close'] = '';
+		$this->pagination->initialize($config);
+		$data['project'] =  $this->project_m->urutProjectPerPageBudget($config['per_page'],$this->uri->segment(4));
+		//print_r($data);
+		$this->template->build('index',$data);
+    }
+
+    public function urutProjectTimeLeft(){
+    	$this->load->library('pagination');
+		$config['base_url'] = base_url() . 'project/project/index';
+		$config['total_rows'] = count($this->project_m->tampilProject()->result());
+		$config['per_page'] = '10'; //maksimum row perhalaman
+		$config['uri_segment'] = '4'; //pengaturan uri -alamat url
+		$config['full_tag_open'] = '';
+		$config['full_tag_close'] = '';
+		$this->pagination->initialize($config);
+		$data['project'] =  $this->project_m->urutProjectPerPageTimeLeft($config['per_page'],$this->uri->segment(4));
 		//print_r($data);
 		$this->template->build('index',$data);
     }
